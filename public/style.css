@@ -1,0 +1,187 @@
+:root {
+    --BlueMunsell: #1985A1;
+    --BlackCoral: #4C5C68;
+    --DavysGrey: #46494C;
+    --Silver: #C5C3C6;
+    --Gainsboro: #DCDCDD;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--BlueMunsell);
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    background-color: var(--BlackCoral);
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+    height: 90px;
+    
+}
+
+header nav {
+    font-size: 1.5rem;
+}
+
+header nav a{
+    text-decoration: none;
+    color: var(--Gainsboro);
+    position: relative;
+    
+}
+
+header nav a + a {
+    margin-left: 10%;
+}
+
+header nav a.active {
+    color: white;
+    text-shadow: 1px 1px 2px var(--DavysGrey);
+}
+
+header nav a:hover {
+    color: var(--Gainsboro);
+    font-weight: bold;
+    text-shadow: 0px 0px 0px var(--DavysGrey);
+}
+
+header nav a::after {
+    content:"";
+    width: 0%;
+    height: 0.1rem;
+    background-color: var(--Silver);
+    position: absolute;
+    left: 0;
+    bottom: -0.1rem;
+    
+}
+
+header nav a:hover::after {
+    width: 100%;
+    transition: width 700ms ease-in-out 100ms;
+}
+
+/* ============ CARD =========== */
+
+.card {
+    width: 800px;
+    background: white;
+
+    margin: 2rem auto 0;
+
+    display: grid;
+    grid-template-columns: 40% 60%;
+
+    box-shadow: 0px 0px 9px 1px #46494C;
+
+    animation-name: left;
+    animation-duration: 2000ms;
+}
+
+.image {
+    background-image: url("https://source.unsplash.com/collection/1603248/800x800");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-right: 4px solid var(--BlueMunsell);
+}
+
+@keyframes left {
+    0%{
+        opacity: 0;
+        transform: translateX(100px);
+    }100%{
+        opacity: 1;
+    }
+}
+.details {
+    margin-left: 2rem;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.card h2 {
+    margin: 8px 0 0 -16px;
+    color: var(--BlueMunsell);
+}
+.details .item div:first-child {
+    font-size: 14px;
+    font-weight: normal;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    margin: 8px 16px 0 0;
+    padding-top: 4px;
+}
+
+.details .item div:nth-child(2) {
+    padding: 4px 0 0 16px;
+    margin-bottom: 8px;
+}
+.details .item span {
+    background: var(--BlueMunsell);
+    padding: 4px 8px;
+    border-radius: 25px;
+    color: whitesmoke;
+    box-shadow: 1px 1px 0px 1px #46494C;
+    display: inline-block
+}
+
+/* ===========  FORM ============ */
+
+input {
+    outline: 0;
+    width: 100%;
+    font-weight: bold;
+    font-size: 20px;
+}
+input[type="date"] {
+    width: initial;
+    font-weight: initial;
+}
+
+input[type="radio"] {
+    width: initial;
+    margin-right: 4px;
+}
+
+form input::placeholder {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+select {
+    outline: 0;
+    background: var(--BlueMunsell);
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 15px;
+    padding: 4px;
+    box-shadow: 2px 2px 0px 0px var(--BlackCoral);
+}
+
+option{
+    background: var(--BlueMunsell);
+    color: white;
+    outline: 0;
+}
+button[type="submit"] {
+    cursor: pointer;
+    padding: 8px 32px;
+    color: var(--BlueMunsell);
+    background-color: var(--Gainsboro);
+    border-radius: 4px;
+    margin: 8px 0;
+    width: 90%;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 2px 2px 0px 0px var(--BlackCoral);
+    outline: 0;
+}

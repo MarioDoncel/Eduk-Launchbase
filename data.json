@@ -1,0 +1,14 @@
+{
+  "teachers": [
+    {
+      "id": 1,
+      "name": "Mariana",
+      "birth": 589161600000,
+      "graduation": "Ensino Superior Completo",
+      "classType": "presencial",
+      "subjects": "portugues, redacao",
+      "avatar_url": "mariana.jpg",
+      "created_at": 1613491779417
+    }
+  ]
+}
