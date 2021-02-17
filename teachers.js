@@ -3,6 +3,9 @@ const fs = require("fs")
 // PUXANDO ARQUIVO DATA JSON
 const data = require("./data.json")
 
+//Puxando funções do utils.js
+const { age, graduation, date } = require("./utils")
+
 
 exports.post = function(req, res) {
     const keys = Object.keys(req.body)
@@ -53,5 +56,25 @@ exports.post = function(req, res) {
     )
 
     // return res.send(req.body)
+}
+
+exports.show = function (req, res) {
+    const id = req.params.id
+
+    const foundTeacher = data.teachers.find(teacher => {
+        return teacher.id == id
+    })
+
+    if (!foundTeacher) return res.send("Professor não encontrado!")
+
+    const teacher = {
+        ...foundTeacher,
+        age: age(foundTeacher.birth),
+        graduation: graduation(foundTeacher.graduation),
+        subjects: foundTeacher.subjects.split(","), 
+        created_at: date(foundTeacher.avatar_url), 
+    }
+
+    return res.render("teachers/show", {teacher : teacher})
 }
 

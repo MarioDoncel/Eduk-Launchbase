@@ -20,6 +20,9 @@ routes.get('/teachers/create', function(req, res) {
     return res.render("teachers/create")
 })
 
+//SHOW
+routes.get('/teachers/:id', teachers.show)
+
 // POST
 routes.post('/teachers', teachers.post)
 

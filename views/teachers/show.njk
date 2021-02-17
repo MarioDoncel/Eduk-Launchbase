@@ -1,0 +1,41 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+    
+    <form method="POST" action="/teachers" class="card">
+        <section class="image" style="background-image: url({{teacher.avatar_url}})">
+        </section>
+        <section class="details">
+            <h2>Professor #{{teacher.id}}</h2>
+            <div class="item">
+                <div>Professor</div>
+                <div>{{teacher.name}}</div>
+            </div>
+            <div class="item">
+                <div>Data de nascimento</div>
+                <div> {{teacher.age}} </div>
+            </div>
+            <div class="item">
+                <div>Escolaridade</div>
+                <div>{{teacher.graduation}}</div>
+            </div>
+            <div class="item">
+                <div>Tipo de aula</div>
+                <div><input type="radio" name="classType" value="Presencial" {% if teacher.classType == "presencial" %} checked
+                {% endif %}><span>Presencial</span> 
+                <input type="radio" name="classType" value="Distancia" {% if teacher.classType == "distancia" %} checked
+                {% endif %}><span>Distância</span></div>
+            </div>
+            <div class="item">
+                <div>Matérias que ensina</div>
+                <div> {% for subject in teacher.subjects %}
+                    <span>{{subject}}</span>
+                {% endfor %}</div>
+            </div>
+            
+            <button type="submit">Editar</button>
+        
+        </section>
+    </form>
+
+{% endblock content %}
