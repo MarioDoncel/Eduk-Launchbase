@@ -1,0 +1,18 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+    
+    <form method="POST" action="/teachers" class="card">
+        <section class="image">
+        </section>
+        <section class="details">
+            <h2>Edite os campos</h2>
+            
+            {% include "teachers/fields.njk"%}
+
+            <button type="submit">Salvar</button>
+        
+        </section>
+    </form>
+
+{% endblock content %}

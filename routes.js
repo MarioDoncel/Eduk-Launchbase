@@ -19,12 +19,16 @@ routes.get('/teachers', function(req, res) {
 routes.get('/teachers/create', function(req, res) {
     return res.render("teachers/create")
 })
+// POST/create
+routes.post('/teachers', teachers.post)
 
 //SHOW
 routes.get('/teachers/:id', teachers.show)
 
-// POST
-routes.post('/teachers', teachers.post)
+//EDIT
+routes.get('/teachers/:id/edit', teachers.edit)
+
+
 
 // ========== STUDENTS ===========
 

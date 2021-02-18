@@ -7,7 +7,10 @@
         </section>
         <section class="details">
             <h2>Preencha os campos</h2>
-            <div class="item">
+
+
+             {% include "teachers/fields.njk"%}
+            {# <div class="item">
                 <div>Professor</div>
                 <div><input type="text" name="name" placeholder="Nome completo"></div>
             </div>
@@ -36,7 +39,7 @@
             <div class="item">
                 <div>Foto</div>
                 <div><input type="text" name="avatar_url" placeholder="HTTP://"></div>
-            </div>
+            </div> #}
             
             <button type="submit">Enviar</button>
         

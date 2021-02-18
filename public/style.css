@@ -137,7 +137,7 @@ header nav a:hover::after {
 
 input {
     outline: 0;
-    width: 100%;
+    width: 95%;
     font-weight: bold;
     font-size: 20px;
 }

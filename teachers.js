@@ -72,9 +72,25 @@ exports.show = function (req, res) {
         age: age(foundTeacher.birth),
         graduation: graduation(foundTeacher.graduation),
         subjects: foundTeacher.subjects.split(","), 
-        created_at: date(foundTeacher.avatar_url), 
+        created_at: new Intl.DateTimeFormat("pt-BR").format(foundTeacher.created_at), 
     }
 
     return res.render("teachers/show", {teacher : teacher})
 }
 
+exports.edit = function (req, res) {
+    const id = req.params.id
+
+    const foundTeacher = data.teachers.find(teacher => {
+        return teacher.id == id
+    })
+
+    if (!foundTeacher) return res.send("Professor não encontrado!")
+
+    const teacher = {
+        ...foundTeacher,
+        birth: date(foundTeacher.birth)
+    }
+
+    return res.render("teachers/edit", { teacher })
+}
