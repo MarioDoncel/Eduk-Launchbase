@@ -94,3 +94,51 @@ exports.edit = function (req, res) {
 
     return res.render("teachers/edit", { teacher })
 }
+
+exports.put = function (req, res) {
+    const { id } = req.body
+    // localizar Teacher pelo ID
+    const foundTeacher = data.teachers.find(teacher => {
+        return teacher.id == id
+    } )
+
+   
+
+    // caso não localize instrutor
+    if (!foundTeacher) return res.send('Instrutor não encontrado!')
+
+    const teacher = {
+        ...foundTeacher,
+        ...req.body,
+        birth: Date.parse(req.body.birth)
+    }
+    
+    data.teachers[id-1] = teacher
+
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), err => {
+        if (err) {
+            return res.send("Write file error!")
+        }
+        return res.redirect(`/teachers/${id}`)
+    })
+}
+
+exports.delete = function (req, res) {
+    const { id } = req.body
+    // localizar Teacher pelo ID
+    const foundTeacher = data.teachers.find(teacher => {
+        return teacher.id == id
+    } )
+    // caso não localize instrutor
+    if (!foundTeacher) return res.send('Instrutor não encontrado!')
+
+    //Filtrando a base de dados e reescrevendo ela sem o objeto "deletado"
+    data.teachers = data.teachers.filter(teacher => id != teacher.id)
+
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), err => {
+        if (err) {
+            return res.send("Write file error!")
+        }
+        return res.redirect(`/teachers`)
+    })
+}

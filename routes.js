@@ -28,6 +28,12 @@ routes.get('/teachers/:id', teachers.show)
 //EDIT
 routes.get('/teachers/:id/edit', teachers.edit)
 
+//PUT/atualizar
+routes.put('/teachers', teachers.put )
+
+//DELETE/deletar
+routes.delete('/teachers', teachers.delete )
+
 
 
 // ========== STUDENTS ===========

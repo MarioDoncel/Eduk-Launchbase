@@ -21,9 +21,9 @@
             </div>
             <div class="item">
                 <div>Tipo de aula</div>
-                <div><input type="radio" name="classType" value="Presencial" {% if teacher.classType == "presencial" %} checked
+                <div><input type="radio" name="classType" value="Presencial" {% if teacher.classType == "Presencial" %} checked
                 {% endif %}><span>Presencial</span> 
-                <input type="radio" name="classType" value="Distancia" {% if teacher.classType == "distancia" %} checked
+                <input type="radio" name="classType" value="Distancia" {% if teacher.classType == "Distancia" %} checked
                 {% endif %}><span>Distância</span></div>
             </div>
             <div class="item">
@@ -37,9 +37,13 @@
                 <div>{{teacher.created_at}}</div>
             </div>
             
-            <button type="submit">Editar</button>
-        
+            <a href="/teachers/{{teacher.id}}/edit" class="button">Editar</a> 
+            </form>
+            <form method="POST" action="/teachers?_method=DELETE" >
+                <input type="hidden" name="id" value="{{teacher.id}}">
+                <button type="submit" class="deleteButton">Deletar</button>
+            </form>
         </section>
-    </form>
+    
 
 {% endblock content %}

@@ -75,7 +75,7 @@ header nav a:hover::after {
     width: 800px;
     background: white;
 
-    margin: 2rem auto 0;
+    margin: 2rem auto 1rem;
 
     display: grid;
     grid-template-columns: 40% 60%;
@@ -184,4 +184,24 @@ button[type="submit"] {
     font-weight: bold;
     box-shadow: 2px 2px 0px 0px var(--BlackCoral);
     outline: 0;
+}
+.button {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 8px 32px;
+    color: var(--BlueMunsell);
+    background-color: var(--Gainsboro);
+    border-radius: 4px;
+    margin: 8px 0;
+    width: 90%;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 2px 2px 0px 0px var(--BlackCoral);
+}
+button[type="submit"].deleteButton {
+    margin-top: 0;
+    color: white;
+    background-color:rgb(253, 49, 49) ;
 }

@@ -2,13 +2,16 @@
 
 {% block content %}
     
-    <form method="POST" action="/teachers" class="card">
+    <form method="POST" action="/teachers?_method=PUT" class="card">
         <section class="image">
         </section>
         <section class="details">
             <h2>Edite os campos</h2>
             
             {% include "teachers/fields.njk"%}
+
+            {# Acrescentando a propriedade ID ao enviar o formulario para que possa puxar no req.body #}
+            <input type="hidden" name="id" value="{{teacher.id}}">
 
             <button type="submit">Salvar</button>
         
