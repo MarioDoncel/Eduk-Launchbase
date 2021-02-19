@@ -205,3 +205,64 @@ button[type="submit"].deleteButton {
     color: white;
     background-color:rgb(253, 49, 49) ;
 }
+
+
+/* ================= TABLE INDEX ============= */
+
+.card.table-container{
+    display:block;
+    box-sizing: border-box;
+    padding: 40px;
+}
+table {
+    text-align: center;
+    border-spacing: 0;
+}
+table td, th {
+    padding: 16px;
+    border-bottom: 1px solid #d9d9d9;
+}
+table tr td:first-child{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+table tr td span.avatar {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    box-shadow: 3px 1px 6px -4px black;
+    border: 2px solid white;
+    margin-right: 10px;
+}
+tbody tr:last-child td{
+    border-bottom: none;
+}
+
+table tr td:nth-child(2) span {
+    background: var(--BlueMunsell);
+    padding: 4px 8px;
+    border-radius: 25px;
+    color: whitesmoke;
+    box-shadow: 1px 1px 0px 1px #46494C;
+    display: inline-block;
+    margin-right: 4px;
+}
+table a{
+    text-decoration: none;
+    padding: 15px 35px;
+    background-color: var(--BlackCoral);
+    color: white;
+    border-radius: 5px;
+}
+table a:hover{
+    text-decoration: none;
+    padding: 15px 35px;
+    background-color: var(--BlueMunsell);
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
