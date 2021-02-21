@@ -1,0 +1,33 @@
+<div class="item">
+                <div>Estudante</div>
+                <div><input type="text" name="name" placeholder="Nome completo" value="{{student.name}}"></div>
+            </div>
+            <div class="item">
+                <div>Data de nascimento</div>
+                <div> <input type="date" name="birth" value="{{student.birth}}"> </div>
+            </div>
+            <div class="item">
+                <div>Ano escolar</div>
+                <div><select name="grade" id="select">
+                    <option value="5º Ano Ensino Fundamental" {% if student.graduation == "5º Ano Ensino Fundamental" %} selected {% endif %}>5º Ano Ensino Fundamental</option>
+                    <option value="6º Ano Ensino Fundamental"{% if student.graduation == "6º Ano Ensino Fundamental" %} selected {% endif %}>6º Ano Ensino Fundamental</option>
+                    <option value="7º Ano Ensino Fundamental"{% if student.graduation == "7º Ano Ensino Fundamental" %} selected {% endif %}>7º Ano Ensino Fundamental</option>
+                    <option value="8º Ano Ensino Fundamental"{% if student.graduation == "8º Ano Ensino Fundamental" %} selected {% endif %}>8º Ano Ensino Fundamental</option>
+                    <option value="1º Ano Ensino Médio"{% if student.graduation == "1º Ano Ensino Médio" %} selected {% endif %}>1º Ano Ensino Médio</option>
+                    <option value="2º Ano Ensino Médio"{% if student.graduation == "2º Ano Ensino Médio" %} selected {% endif %}>2º Ano Ensino Médio</option>
+                    <option value="3º Ano Ensino Médio"{% if student.graduation == "3º Ano Ensino Médio" %} selected {% endif %}>3º Ano Ensino Médio</option>
+                </select></div>
+            </div>
+            <div class="item">
+                <div>Email</div>
+                <div> <input type="text" name="email" placeholder="email@email.com" value="{{student.email}}"></div>
+            </div>
+            
+            <div class="item">
+                <div>Carga horária(em horas)</div>
+                <div> <input type="number" name="workload" placeholder="Quantidade de horas" value="{{student.workload}}"></div>
+            </div>
+            <div class="item">
+                <div>Foto</div>
+                <div><input type="text" name="avatar_url" placeholder="HTTP://" value="{{student.avatar_url}}"></div>
+            </div>

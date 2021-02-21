@@ -1,0 +1,21 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+    
+    <form method="POST" action="/students?_method=PUT" class="card">
+        <section class="image">
+        </section>
+        <section class="details">
+            <h2>Edite os campos</h2>
+            
+            {% include "students/fields.njk"%}
+
+            {# Acrescentando a propriedade ID ao enviar o formulario para que possa puxar no req.body #}
+            <input type="hidden" name="id" value="{{student.id}}">
+
+            <button type="submit">Salvar</button>
+        
+        </section>
+    </form>
+
+{% endblock content %}

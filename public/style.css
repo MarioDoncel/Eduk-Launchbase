@@ -251,14 +251,21 @@ table tr td:nth-child(2) span {
     display: inline-block;
     margin-right: 4px;
 }
-table a{
+.card.table-container a{
+    display: inline-block;
     text-decoration: none;
     padding: 15px 35px;
     background-color: var(--BlackCoral);
     color: white;
     border-radius: 5px;
 }
-table a:hover{
+.card.table-container > a {
+    margin-bottom: 16px;
+    background-color: var(--Silver);
+    color: var(--DavysGrey);
+    font-weight: bold;
+}
+.card.table-container a:hover{
     text-decoration: none;
     padding: 15px 35px;
     background-color: var(--BlueMunsell);

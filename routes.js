@@ -4,7 +4,8 @@ const express = require('express')
 const routes = express.Router()
 
 // IMPORTANDO FUNCAO PARA O POST
-const teachers = require("./teachers")
+const teachers = require("./controllers/teachers")
+const students = require("./controllers/students")
 
 routes.get('/', function(req, res) {
     return res.redirect("/teachers")
@@ -36,9 +37,25 @@ routes.delete('/teachers', teachers.delete )
 
 // ========== STUDENTS ===========
 
-routes.get('/students', function(req, res) {
-    return res.render("students/index")
+routes.get('/students', students.index)
+
+routes.get('/students/create', function(req, res) {
+    return res.render("students/create")
 })
+// POST/create
+routes.post('/students', students.post)
+
+//SHOW
+routes.get('/students/:id', students.show)
+
+//EDIT
+routes.get('/students/:id/edit', students.edit)
+
+//PUT/atualizar
+routes.put('/students', students.put )
+
+//DELETE/deletar
+routes.delete('/students', students.delete )
 
 
 module.exports = routes

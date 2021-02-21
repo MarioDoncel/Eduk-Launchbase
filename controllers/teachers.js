@@ -1,10 +1,10 @@
 const fs = require("fs")
 
 // PUXANDO ARQUIVO DATA JSON
-const data = require("./data.json")
+const data = require("../data.json")
 
 //Puxando funções do utils.js
-const { age, graduation, date } = require("./utils")
+const { age, graduation, date } = require("../utils")
 
 
 exports.index = function(req, res) {
@@ -33,7 +33,11 @@ exports.post = function(req, res) {
     created_at = Date.now()
 
     // CRIANDO PARAMETRO ID A PARTIR DO TAMANHO DO ARRAY TEACHERS
-    id = Number(data.teachers.length +1)
+    const lastTeacher = data.teachers[data.teachers.length-1]
+    let id = 1
+    if (lastTeacher) {
+        id = Number(lastTeacher.id+1)
+    }
  
     // INCLUINDO NOVO OBJETO NO ARRAY TEACHERS 
     data.teachers.push({
@@ -93,7 +97,7 @@ exports.edit = function (req, res) {
 
     const teacher = {
         ...foundTeacher,
-        birth: date(foundTeacher.birth)
+        birth: date(foundTeacher.birth).iso
     }
 
     return res.render("teachers/edit", { teacher })
@@ -117,7 +121,8 @@ exports.put = function (req, res) {
         birth: Date.parse(req.body.birth)
     }
     
-    data.teachers[id-1] = teacher
+    const currentIndex = data.students.indexOf(foundStudent)
+    data.teachers[currentIndex] = teacher
 
     fs.writeFile("data.json", JSON.stringify(data, null, 2), err => {
         if (err) {

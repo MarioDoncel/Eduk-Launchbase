@@ -1,0 +1,54 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+    
+    <form method="POST" action="/students" class="card">
+        <section class="image" style="background-image: url({{student.avatar_url}})">
+        </section>
+        <section class="details">
+            <h2>Estudante #{{student.id}}</h2>
+            <div class="item">
+                <div>Estudante</div>
+                <div>{{student.name}}</div>
+            </div>
+            <div class="item">
+                <div>Data de nascimento</div>
+                <div> {{student.age}} </div>
+            </div>
+            <div class="item">
+                <div>Aniversário</div>
+                <div> {{student.birthDay}} </div>
+            </div>
+            <div class="item">
+                <div>Email</div>
+                <div>{{student.email}}</div>
+            </div>
+            <div class="item">
+                <div>Ano escolar</div>
+                <div>{{student.grade}}</div>
+            </div>
+            <div class="item">
+                <div>Carga horária</div>
+                <div>{{student.workload}} horas</div>
+            </div>
+            
+            <a href="/students/{{student.id}}/edit" class="button">Editar</a> 
+            </form>
+            <form id="form-delete" method="POST" action="/students?_method=DELETE" >
+                <input type="hidden" name="id" value="{{student.id}}">
+                <button type="submit" class="deleteButton">Deletar</button>
+            </form>
+        </section>
+        <script>
+            const deleteButton = document.querySelector('.deleteButton')
+            deleteButton.addEventListener("click", event => {
+            const confirmation = confirm("Deseja realmente deletar?")
+
+            if(!confirmation) {
+            event.preventDefault()
+            }
+            })
+        </script>
+    
+
+{% endblock content %}
