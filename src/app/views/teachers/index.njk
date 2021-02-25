@@ -18,7 +18,7 @@
                         {{teacher.name}}
                     </td>
                     <td> 
-                        {% for subject in teacher.subjects.split(",") %} 
+                        {% for subject in teacher.subjects_taught.split(",") %} 
                         <span>{{subject.toUpperCase()}}</span>
                         {% endfor %}</td>
                     <td> <a href="/teachers/{{teacher.id}}"> Detalhar</a></td>

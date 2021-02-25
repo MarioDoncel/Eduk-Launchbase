@@ -17,18 +17,18 @@
             </div>
             <div class="item">
                 <div>Escolaridade</div>
-                <div>{{teacher.graduation}}</div>
+                <div>{{teacher.education_level}}</div>
             </div>
             <div class="item">
                 <div>Tipo de aula</div>
-                <div><input type="radio" name="classType" value="Presencial" {% if teacher.classType == "Presencial" %} checked
+                <div><input type="radio" name="class_type" value="Presencial" {% if teacher.class_type == "Presencial" %} checked
                 {% endif %}><span>Presencial</span> 
-                <input type="radio" name="classType" value="Distancia" {% if teacher.classType == "Distancia" %} checked
+                <input type="radio" name="class_type" value="Distancia" {% if teacher.class_type == "Distancia" %} checked
                 {% endif %}><span>Distância</span></div>
             </div>
             <div class="item">
                 <div>Matérias que ensina</div>
-                <div> {% for subject in teacher.subjects %}
+                <div> {% for subject in teacher.subjects_taught %}
                     <span>{{subject}}</span>
                 {% endfor %}</div>
             </div>
