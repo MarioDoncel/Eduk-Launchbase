@@ -3,11 +3,19 @@
 {% block content %}
     
     <div class="card table-container">
-        <a href="/teachers/create"> Cadastrar novo professor</a>
+        <div class="header">
+            <a href="/teachers/create"> Cadastrar novo professor</a>
+            <form action="/teachers?filter=name" method="GET">
+                <input type="text" name="filter" placeholder="Professor ou matéria" value="{{filter}}">
+                <button type="submit">Filtrar</button>
+            </form>
+        </div>
+        
         <table width="100%">
             <thead>
                 <th>Nome completo</th>
                 <th>Matérias</th>
+                <th>Alunos</th>
                 <th>Ação</th>
             </thead>
             <tbody>
@@ -21,6 +29,9 @@
                         {% for subject in teacher.subjects_taught.split(",") %} 
                         <span>{{subject.toUpperCase()}}</span>
                         {% endfor %}</td>
+                    <td>
+                        {{teacher.total_students}}
+                    </td>
                     <td> <a href="/teachers/{{teacher.id}}"> Detalhar</a></td>
                 </tr>
                 {% endfor %}

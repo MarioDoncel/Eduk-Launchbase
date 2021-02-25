@@ -273,3 +273,26 @@ table tr td:nth-child(2) span {
     font-weight: bold;
     border-radius: 5px;
 }
+
+.card.table-container .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.card.table-container .header form {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+.card.table-container .header form input {
+    width: 240px;
+    height: 40px;
+    border: 1px solid #eee;
+    padding: 0px 8px;
+    margin-right: 4px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+.card.table-container .header form input::placeholder{
+    font-size: 12px;
+}

@@ -31,3 +31,13 @@
                 <div>Foto</div>
                 <div><input type="text" name="avatar_url" placeholder="HTTP://" value="{{student.avatar_url}}"></div>
             </div>
+            <div class="item">
+                <div>Aluno de</div>
+                <div>
+                    <select name="teacher" id="select">
+                        {% for teacher in optionsTeacher %}
+                        <option value="{{teacher.id}}" {% if student.teacher_id == "{{teacher.id}}" %} selected {% endif %}>{{teacher.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>

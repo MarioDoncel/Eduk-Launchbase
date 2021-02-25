@@ -42,7 +42,11 @@ module.exports = {
 
             student.birth=date(student.birth).iso
 
-            return res.render("students/edit", {student})
+            Student.teacherSelectOption(function (optionsTeacher) {
+                return res.render("students/edit", {student, optionsTeacher})
+            })
+
+            
         })
         
     },
