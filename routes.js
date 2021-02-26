@@ -39,9 +39,7 @@ routes.delete('/teachers', teachers.delete )
 
 routes.get('/students', students.index)
 
-routes.get('/students/create', function(req, res) {
-    return res.render("students/create")
-})
+routes.get('/students/create', students.create)
 // POST/create
 routes.post('/students', students.post)
 

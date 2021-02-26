@@ -222,7 +222,10 @@ table td, th {
     padding: 16px;
     border-bottom: 1px solid #d9d9d9;
 }
-table tr td:first-child{
+table tr {
+    display: table-row;
+}
+table tr td:first-child div{
     display: flex;
     align-items: center;
     justify-content: left;
@@ -295,4 +298,18 @@ table tr td:nth-child(2) span {
 }
 .card.table-container .header form input::placeholder{
     font-size: 12px;
+}
+.card.table-container .pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.card.table-container .pagination a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0 8px;
+    background-color:inherit;
+    color: var(--BlueMunsell);
+    border-radius: 0px;
 }

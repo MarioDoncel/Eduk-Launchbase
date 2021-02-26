@@ -22,8 +22,10 @@
                 {% for teacher in teachers %}
                 <tr>
                     <td>
-                        <span class="avatar" style="background-image: url({{teacher.avatar_url}})"></span>
+                        <div>
+                            <span class="avatar" style="background-image: url({{teacher.avatar_url}})"></span>
                         {{teacher.name}}
+                        </div>
                     </td>
                     <td> 
                         {% for subject in teacher.subjects_taught.split(",") %} 
@@ -37,6 +39,8 @@
                 {% endfor %}
             </tbody>
         </table>
+        <div class="pagination" data-page={{pagination.page}} data-total={{pagination.total}} data-filter={{filter}}>
+        </div>
     </div>
-
+        
 {% endblock content %}

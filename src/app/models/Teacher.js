@@ -98,5 +98,55 @@ module.exports = {
             if(err) throw `DATABASE Error!${err}`
             callback()
         })
+    },
+    paginate(params, callback){
+        let {filter, limit, offset} = params
+
+        let query = `
+        SELECT teachers.*,
+            (SELECT count(*) from teachers) AS total,
+        count(students) AS total_students 
+        FROM teachers
+        LEFT JOIN students ON (teachers.id = students.teacher_id)
+        `
+        if(filter) {
+            query = `
+            SELECT teachers.*,
+                (SELECT count(*) from teachers
+                WHERE teachers.name ILIKE '%${filter}%'
+                OR teachers.subjects_taught ILIKE '%${filter}%')
+                AS total,
+            count(students) AS total_students 
+            FROM teachers
+            LEFT JOIN students ON (teachers.id = students.teacher_id)
+            WHERE teachers.name ILIKE '%${filter}%'
+            OR teachers.subjects_taught ILIKE '%${filter}%'
+            `
+        }
+
+        query += `
+        GROUP BY teachers.id 
+        ORDER BY total_students DESC
+        LIMIT $1 OFFSET $2
+        `
+
+        db.query(query, [limit, offset], function (err, results) {
+            if(err) throw `DATABASE Error!${err}`
+            callback(results.rows)
+        })
+
+            
+        // db.query(`
+        // SELECT teachers.*, count(students) AS total_students 
+        // FROM teachers
+        // LEFT JOIN students ON (teachers.id = students.teacher_id)
+        // WHERE teachers.name ILIKE '%${filter}%'
+        // OR teachers.subjects_taught ILIKE '%${filter}%'
+        // GROUP BY teachers.id 
+        // ORDER BY total_students DESC
+        // `, function (err, results) {
+        //     if(err) throw `DATABASE Error!${err}`
+        //     callback(results.rows)
+        // })
     }
 }
