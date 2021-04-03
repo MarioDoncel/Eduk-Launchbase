@@ -118,13 +118,13 @@ module.exports = {
         if(filter) {
             query = `
             SELECT *,
-                (SELECT count(*) from students
+                (SELECT count(*) FROM students
                 WHERE students.name ILIKE '%${filter}%'
-                OR teachers.email ILIKE '%${filter}%')
+                OR students.email ILIKE '%${filter}%')
                 AS total, 
             FROM students
-            WHERE teachers.name ILIKE '%${filter}%'
-            OR teachers.subjects_taught ILIKE '%${filter}%'
+            WHERE students.name ILIKE '%${filter}%'
+            OR students.email ILIKE '%${filter}%'
             `
         }
 
