@@ -18,11 +18,14 @@ module.exports = {
             offset
         }
         Teacher.paginate(params, function (teachers) {
-            const pagination = {
-                total:Math.ceil(teachers[0].total/limit),
-                page
+            if(teachers[0]){
+                const pagination = {
+                    total:Math.ceil(teachers[0].total/limit),
+                    page
+                }
+                return res.render("teachers/index", {teachers,pagination, filter})
             }
-            return res.render("teachers/index", {teachers,pagination, filter})
+            return res.render("teachers/index", {teachers, filter})
         })
 
         // if (filter) {

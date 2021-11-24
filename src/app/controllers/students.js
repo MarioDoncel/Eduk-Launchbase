@@ -17,11 +17,14 @@ module.exports = {
         }
 
         Student.paginate(params, function (students) {
-            const pagination = {
-                total:Math.ceil(students[0].total/limit),
-                page
+            if(students[0]){
+                const pagination = {
+                    total:Math.ceil(students[0].total/limit),
+                    page
+                }
+                return res.render("students/index",{filter, students, pagination})
             }
-            return res.render("students/index",{filter, students, pagination})
+            return res.render("students/index",{filter, students})
         })        
         
     },
@@ -64,7 +67,7 @@ module.exports = {
 
             student.birth=date(student.birth).iso
 
-            Student.teacherSelectOption(function (optionsTeacher) {
+            Student.teacherSelectOptions(function (optionsTeacher) {
                 return res.render("students/edit", {student, optionsTeacher})
             })
 
